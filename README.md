@@ -1,2 +1,2 @@
 # config-neovim-tmux
-Configuración de neovim y tmux
+Configuración de neovim, tmux y bash
