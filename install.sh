@@ -18,7 +18,6 @@ function dependencies(){
   tput civis
   clear; dependencies=(tmux nvim)
 
-
   echo -ne "\n${yellowColour}[*]${endColour}${blueColour} Programa${endColour} Oh-my-bash -> "
   test -f ~/.oh-my-bash
   if [ "$(echo $?)" == "1" ]; then
