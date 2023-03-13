@@ -1,4 +1,4 @@
-#!/bin/bash
+#/bin/bash
 
 #Colours
 greenColour="\e[0;32m\033[1m"
@@ -20,6 +20,7 @@ function dependencies(){
 
   echo -ne "\n${yellowColour}[*]${endColour}${blueColour} Programa${endColour} Oh-my-bash -> "
   test -f ~/.oh-my-bash
+
   if [ "$(echo $?)" == "1" ]; then
     echo -e "${greenColour}(V)${endColour}"
   else
@@ -45,21 +46,31 @@ function dependencies(){
 
 dependencies
 
-echo -e "\n${yellowColour}[*]${endColour} Configurando - Remomoviendo dotfiles existentes"
-echo -e "\n${yellowColour}[**]${endColour} Removiendo config de neo vim"
+echo -e "\n${yellowColour}[*]${endColour} Configurando - Removiendo dotfiles existentes"
 
-rm -rf ~/.config/nvim
+echo -e "\n${yellowColour}[**]${endColour} Removiendo config de neo vim"
+rm -rf -v ~/.config/nvim
 
 echo -e "\n${yellowColour}[**]${endColour} Remomoviendo config tmux"
-rm -rf ~/.vim ~/.vimrc ~/.zshrc ~/.tmux ~/.tmux.conf ~/.config/nvim 2> /dev/null
+rm -rf -v ~/.vim ~/.vimrc ~/.tmux.conf ~/.config/nvim 2> /dev/null
+
+echo -e "\n${yellowColour}[**]${endColour} Remomoviendo config basrc"
+rm -v ~/.bashrc
 
 echo -e "\n${yellowColour}[**]${endColour} Linkeando con archivos del repo"
-mkdir ~/.config/nvim/
-mkdir ~/.config/nvim/lua/
-mkdir ~/.config/nvim/lua/kevmansilla/
-mkdir ~/.config/nvim/after
-mkdir ~/.config/nvim/after/plugin/
-cp nvim/init.lua ~/.config/nvim/
-cp nvim/after/plugin/* ~/.config/nvim/after/plugin/
-cp nvim/lua/kevmansilla/* ~/.config/nvim/lua/kevmansilla/
 
+echo -e "\n${yellowColour}[**]${endColour} Linkeando archivos vim"
+mkdir -v ~/.config/nvim/
+mkdir -v ~/.config/nvim/lua/
+mkdir -v ~/.config/nvim/lua/kevmansilla/
+mkdir -v ~/.config/nvim/after
+mkdir -v ~/.config/nvim/after/plugin/
+cp -v nvim/init.lua ~/.config/nvim/
+cp -v nvim/after/plugin/* ~/.config/nvim/after/plugin/
+cp -v nvim/lua/kevmansilla/* ~/.config/nvim/lua/kevmansilla/
+
+echo -e "\n${yellowColour}[**]${endColour} Linkeando con archivos del tmux"
+ln -s -v tmux.conf ~/.tmux.conf
+
+echo -e "\n${yellowColour}[**]${endColour} Linkeando con archivos del repo"
+ln -s -v bashrc ~/.bashrc
