@@ -89,7 +89,7 @@ source "$OSH"/oh-my-bash.sh
 
 # Preferred editor for local and remote sessions
 
-export EDITOR=nvim
+export EDITOR=micro
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
